@@ -1,26 +1,38 @@
 ﻿using System;
-namespace CSharpConsoleLearning
+namespace LearningCSharp1
 {
     class Program
     {
         public static void Main(string[] args)
         {
-            var dozer = new Bulldozer("Yellow", "Mini");
-            var dozer2 = new Bulldozer("Red", "Large");
-            Console.WriteLine("Bulldozer 1 is: " + dozer.color);
-            Console.WriteLine("Bulldozer 2 is: " + dozer2.color);
+            var worker = new FactoryWorker();
+            worker.Count(4);
+            worker.Count(2);
+            worker.Count(2.5f);
             Console.ReadLine();
         }
     }
-    public class Bulldozer
+    public class FactoryWorker
     {
-        // this is a constructor
-        public Bulldozer(string _color, string _size)
+        public FactoryWorker()
         {
-            this.color = _color;
-            this.size = _size;
+
         }
-        public string color { get; set; }
-        public string size { get; set; }
+        public void Count(int number)
+        {
+            if (Total == null)
+                Total = 0;
+            // convert to float using tosingle
+            Total = Total + Convert.ToSingle(number);
+            Console.WriteLine(Total.ToString());
+        }
+        //only use the same name when doing the same function but with different variable type
+        public void Count(float number)
+        {
+            Total = Total + number;
+            Console.WriteLine(Total.ToString());
+        }
+        //make float so everything handles floats
+        public float Total { get; set; }
     }
 }
