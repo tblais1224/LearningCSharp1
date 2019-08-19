@@ -5,25 +5,44 @@ namespace LearningCSharp1
     {
         public static void Main(string[] args)
         {
-            var worker = new FactoryWorker();
-            var result = worker.AddNumbers(3, 9);
-            Console.WriteLine(result.ToString());
+            var car1 = new Car();
+            car1.color = "Red";
+            car1.manufacturer = "Toyota";
+            var saloonCar1 = new SaloonCar(2);
+            var saloonCar2 = new SaloonCar(3, "Nissan");
+            var saloonCar3 = new SaloonCar(4, "Purple", "Ford");
+            Console.WriteLine(car1.color + " " + car1.manufacturer);
+            Console.WriteLine(saloonCar1.seats);
+            Console.WriteLine(saloonCar2.manufacturer + " " + saloonCar2.seats);
+            Console.WriteLine(saloonCar3.color + " " + saloonCar3.manufacturer + " " + saloonCar3.seats);
             Console.ReadLine();
         }
     }
-    public class FactoryWorker
+    public class Car
     {
-        public FactoryWorker()
+        public Car()
         {
-
         }
-        public int AddNumbers (int num1, int num2)
+        public string color { get; set; }
+        public string manufacturer { get; set; }
+    }
+    public class SaloonCar : Car
+    {
+        public SaloonCar(int _seats)
         {
-            var result = num1 + num2;
-            //anything in here can be modified as needed
-            result = result + 100;
-            result = result - 100;
-            return result; 
+            this.seats = _seats;
         }
+        public SaloonCar(int _seats, string _manufacturer)
+        {
+            this.seats = _seats;
+            this.manufacturer = _manufacturer;
+        }
+        public SaloonCar(int _seats, string _color, string _manufacturer)
+        {
+            this.seats = _seats;
+            this.color = _color;
+            this.manufacturer = _manufacturer;
+        }
+        public int seats { get; set; }
     }
 }
