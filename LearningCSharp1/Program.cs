@@ -6,9 +6,8 @@ namespace LearningCSharp1
         public static void Main(string[] args)
         {
             var worker = new FactoryWorker();
-            worker.Count(4);
-            worker.Count(2);
-            worker.Count(2.5f);
+            var result = worker.AddNumbers(3, 9);
+            Console.WriteLine(result.ToString());
             Console.ReadLine();
         }
     }
@@ -18,21 +17,13 @@ namespace LearningCSharp1
         {
 
         }
-        public void Count(int number)
+        public int AddNumbers (int num1, int num2)
         {
-            if (Total == null)
-                Total = 0;
-            // convert to float using tosingle
-            Total = Total + Convert.ToSingle(number);
-            Console.WriteLine(Total.ToString());
+            var result = num1 + num2;
+            //anything in here can be modified as needed
+            result = result + 100;
+            result = result - 100;
+            return result; 
         }
-        //only use the same name when doing the same function but with different variable type
-        public void Count(float number)
-        {
-            Total = Total + number;
-            Console.WriteLine(Total.ToString());
-        }
-        //make float so everything handles floats
-        public float Total { get; set; }
     }
 }
