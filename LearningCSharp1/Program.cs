@@ -5,22 +5,50 @@ namespace CSharpConsoleLearning
     {
         public static void Main(string[] args)
         {
-            var dozer = new Bulldozer("Yellow", "Mini");
-            var dozer2 = new Bulldozer("Red", "Large");
-            Console.WriteLine("Bulldozer 1 is: " + dozer.color);
-            Console.WriteLine("Bulldozer 2 is: " + dozer2.color);
-            Console.ReadLine();
+            var man = new Man();
+            var kart = new Kart();
+            var alien = new Alien();
         }
     }
-    public class Bulldozer
+    public class GeneralObject
     {
-        // this is a constructor
-        public Bulldozer(string _color, string _size)
+        public GeneralObject()
         {
-            this.color = _color;
-            this.size = _size;
         }
+        public bool moves { get; set; }
         public string color { get; set; }
-        public string size { get; set; }
+    }
+    public class Human : GeneralObject
+    {
+        public Human()
+        {
+        }
+        public string name { get; set; }
+    }
+    public class Man : Human
+    {
+        public Man()
+        {
+        }
+    }
+    public class Woman : Human
+    {
+        public Woman()
+        {
+        }
+    }
+    public class Kart : GeneralObject
+    {
+        public Kart()
+        {
+        }
+        public string manufacturer { get; set; }
+    }
+    public class Alien : GeneralObject
+    {
+        public Alien()
+        {
+        }
+        public string planet { get; set; }
     }
 }
